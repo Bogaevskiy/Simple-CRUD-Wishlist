@@ -1,0 +1,18 @@
+{% extends "wishlist/base_wishlist.html" %}
+
+{% block title %}
+	Wish "{{ wish.title }}"
+{% endblock %}
+
+{% block content %}
+	<h1><b>{{ wish.title }}</b></h1>		
+	<p>Price: {{ wish.price }}</p>
+	<p>Link: <a href={{ wish.link }}> {{ wish.link }} </a></p>
+	<p>Note: {{ wish.note }}</p><br>
+
+	<a class="btn btn-primary" href="{% url "wish_update_url" id=wish.id %}" role="button">Update wish</a>
+	<a class="btn btn-primary" href="{% url "wish_delete_url" id=wish.id %}" role="button">Delete wish</a>
+	<a class="btn btn-primary" href="{% url "wishlist_url" %}" role="button">Back to list</a>
+	
+{% endblock %}
+

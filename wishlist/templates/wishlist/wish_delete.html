@@ -1,0 +1,18 @@
+{% extends "wishlist/base_wishlist.html" %}
+
+{% block title %}
+	Deleting wish "{{ wish.title }}"
+{% endblock %}
+
+{% block content %}
+	<form action = "{% url 'wish_delete_url' id=wish.id %}" method = "post">
+		{% csrf_token %}
+
+		<h2>Are you sure you want to delete wish <b>"{{ wish.title }}"</b>?</h2><br>
+		
+		<button type = "Submit" class = "btn btn-danger">Yes, I am sure</button> 
+		<a class="btn btn-primary" href="{% url "wish_details_url" id=wish.id %}" role="button">No, let it be</a>
+	</form>
+
+		
+{% endblock %}

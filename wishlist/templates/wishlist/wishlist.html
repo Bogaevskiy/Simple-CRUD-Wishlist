@@ -1,0 +1,21 @@
+{% extends "wishlist/base_wishlist.html" %}
+
+{% block title %}
+	Wishlist
+{% endblock %}
+
+{% block content %}
+	<h1><b>Wishlist</b></h1>	
+	<a class="btn btn-primary" href="{% url "new_wish_url" %}" role="button">Add new wish</a>
+	<br><br>
+
+	{% for wish in wishes %}
+		<hr>
+		<p><b><a href="{% url "wish_details_url" id=wish.id %}"> {{ wish.title }} </a></b></p>
+		<p>Price: {{ wish.price }}</p>
+		<p>Link: <a href={{ wish.link }}> {{ wish.link }} </a></p>
+		<p>Note: {{ wish.note }}</p>
+	{% endfor %}
+	
+{% endblock %}
+

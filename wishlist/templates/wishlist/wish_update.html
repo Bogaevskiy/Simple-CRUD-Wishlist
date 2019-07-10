@@ -1,0 +1,28 @@
+{% extends "wishlist/base_wishlist.html" %}
+
+{% block title %}
+	Edit wish "{{ wish.title }}"
+{% endblock %}
+
+{% block content %}
+	<h1><b>What is your wish?</b></h1><br>
+	<form action = "{% url 'wish_update_url' id=wish.id %}" method = "post">
+		{% csrf_token %}
+
+		{% for field in form %}
+			{% if field.errors %}
+					<div class="alert alert-danger">
+						{{ field.errors }}
+					</div>
+			{% endif %}
+			<div class = "form-group">
+				{{ field.label }}
+				{{ field }}
+			</div>
+		{% endfor %}
+		
+		<button type = "Submit" class = "btn btn-primary">Update wish</button>  
+		<a class="btn btn-primary" href="{% url "wish_details_url" id=wish.id %}" role="button">Cancel</a>
+	</form>
+		
+{% endblock %}
